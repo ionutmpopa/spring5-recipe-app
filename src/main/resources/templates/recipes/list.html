@@ -11,17 +11,19 @@
 </h1>
 
 <div th:each="recipe: ${recipes}">
-        <span th:text="'Prep time: ' + ${recipe.prepTime} + '; '"/>
-        <span th:text="'Cook time: ' + ${recipe.cookTime} + '; '"/>
-        <span th:text="'Total time: ' + ${recipe.prepTime + recipe.cookTime} + '; '"/>
+        <span th:text="'Prep time: ' + ${recipe.prepTime} + '; '"></span>
+        <span th:text="'Cook time: ' + ${recipe.cookTime} + '; '"></span>
+        <span th:text="'Total time: ' + ${recipe.prepTime + recipe.cookTime} + '; '"></span>
 
-    <p th:text="${recipe.note}"></p>
+    <p th:text="${recipe.note.recipeNotes}"></p>
 
     <p th:each="ingredient: ${recipe.ingredient}">
-        <span th:text="${ingredient.amount}"/>
-        <span th:text="${ingredient.uom.description}"/>
-        <span th:text="${ingredient.description}"/>
+        <span th:text="${ingredient.amount}"></span>
+        <span th:text="${ingredient.uom}"></span>
+        <span th:text="${ingredient.description}"></span>
     </p>
+    <h1></h1>
+    <p th:text="${recipe.directions}"></p>
 
 </div>
 

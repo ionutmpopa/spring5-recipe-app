@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class RecipeController {
@@ -20,14 +21,8 @@ public class RecipeController {
 
     @GetMapping("/recipes")
     public String getRecipeList(Model model) {
-        List<Recipe> recipes = recipeService.displayRecipes();
 
-        for (Recipe recipe : recipes) {
-            for (Ingredient ingredient : recipe.getIngredient()) {
-                model.addAttribute("ingredient", ingredient);
-            }
-        }
-
+        Set<Recipe> recipes = recipeService.displayRecipes();
         model.addAttribute("recipes", recipes);
         return "recipes/list";
 
