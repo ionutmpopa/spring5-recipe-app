@@ -1,8 +1,7 @@
 package guru.springframework.controller;
 
-import guru.springframework.model.Ingredient;
-import guru.springframework.model.Recipe;
-import guru.springframework.service.RecipeService;
+import guru.springframework.domain.Recipe;
+import guru.springframework.services.RecipeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +21,7 @@ public class RecipeController {
     @GetMapping("/recipes")
     public String getRecipeList(Model model) {
 
-        Set<Recipe> recipes = recipeService.displayRecipes();
+        Set<Recipe> recipes = recipeService.getRecipes();
         model.addAttribute("recipes", recipes);
         return "recipes/list";
 
